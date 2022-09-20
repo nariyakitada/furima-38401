@@ -1,24 +1,64 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| name               | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :products
+- has_many :records
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## products テーブル
 
-* Database initialization
+| Column      | Type         | Options                        |
+| ----------- | ------------ | ------------------------------ |
+| image       | string       | null: false                    |
+| item_name   | string       | null: false                    |
+| explanation | string       | null: false                    |
+| category    | string       | null: false                    |
+| situation   | string       | null: false                    |
+| area        | string       | null: false                    |
+| days        | string       | null: false                    |
+| price       | string       | null: false                    |
+| user_id     | references   | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_one :records
+- belongs_to :users
 
-* Deployment instructions
 
-* ...
+
+## records テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| user_id     | references | null: false, foreign_key: true |
+| products_id | references | null: false, foreign_key: true |
+
+### Association
+
+- has_one :addresses
+- belongs_to :users
+- belongs_to :products
+
+
+## addresses テーブル
+
+| Column         | Type   | Options     |
+| -------------- | ------ | ----------- |
+| post_code      | string | null: false |
+| prefectures    | string | null: false |
+| municipalities | string | null: false |
+| address        | string | null: false |
+| building_name  | string |             |
+| phone_number   | string | null: false |
+
+### Association
+
+- belongs_to :records
