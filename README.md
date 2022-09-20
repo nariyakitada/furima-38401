@@ -23,7 +23,7 @@
 | Column       | Type         | Options                        |
 | ------------ | ------------ | ------------------------------ |
 | item_name    | string       | null: false                    |
-| explanation  | string       | null: false                    |
+| explanation  | text         | null: false                    |
 | category_id  | integer      | null: false                    |
 | situation_id | integer      | null: false                    |
 | delivery_id  | integer      | null: false                    |
