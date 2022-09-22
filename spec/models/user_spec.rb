@@ -116,7 +116,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include  "First name2 is invalid"
     end
 
-    it "last_name2がない場合は登録できないこと" do
+    it "last_name2は、全角（カタカナ）での入力が必須であること" do
       @user.last_name2 = 'あああ'
       @user.valid?
       expect(@user.errors.full_messages).to include  "Last name2 is invalid"
