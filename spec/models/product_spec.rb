@@ -7,6 +7,13 @@ RSpec.describe Product, type: :model do
 
 
   describe 'ユーザー新規登録' do
+    context '商品出品できる場合' do
+      it "必要な情報を入力すれば登録できる" do
+        expect(@product).to be_valid
+      end
+    end
+
+    context '商品出品できない場合' do
     it "商品画像を1枚つけることが必須であること" do
       @product.image = nil
       @product.valid?
@@ -74,10 +81,17 @@ RSpec.describe Product, type: :model do
     end
 
     it "価格は半角数値のみ保存可能であること" do
-      @product.price = 'あ'
+      @product.price = '１'
       @product.valid?
       expect(@product.errors.full_messages).to include "Price is not included in the list"
     end
+
+    it "ユーザー情報がない場合は登録できないこと" do
+      @product.user = nil
+      @product.valid?
+      expect(@product.errors.full_messages).to include('User must exist')
+    end
   end
+end
 
 end
