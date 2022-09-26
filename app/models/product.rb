@@ -16,5 +16,5 @@ class Product < ApplicationRecord
   validates :delivery_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :area_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :shipment_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :price, presence: true, inclusion: { in: 300..9999999 }, format: { with:/\A[0-9]+\z/ }
+  validates :price, presence: true, inclusion: { in: 300..9999999 }
 end
