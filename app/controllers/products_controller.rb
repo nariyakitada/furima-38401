@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
  
 
   def index
+    @products = Product.all
+    @products = Product.order("created_at DESC")
   end
 
   def new
