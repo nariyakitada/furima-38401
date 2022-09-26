@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!,except: [ :index]
+  before_action :authenticate_user!,except: [ :index, :show]
  
 
   def index
@@ -19,6 +19,11 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @product = Product.find(params[:id])
+  end
+  
   
 
   private
