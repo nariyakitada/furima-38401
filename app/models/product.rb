@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   belongs_to :delivery
   belongs_to :area
   belongs_to :shipment
+  has_one :order
 
   validates :image, presence: true
   validates :item_name, presence: true
