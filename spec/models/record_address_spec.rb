@@ -55,6 +55,16 @@ RSpec.describe RecordAddress, type: :model do
         @record_address.valid?
         expect(@record_address.errors.full_messages).to include("Phone number is invalid")
       end
+      it '電話番号は、12桁以上だと保存できないこと' do
+        @record_address.phone_number = '111111111111'
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it '電話番号は、半角数値のみ保存可能なこと' do
+        @record_address.phone_number = '１１１１１１１１１１１'
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Phone number is invalid")
+      end
     end
   end
 end
