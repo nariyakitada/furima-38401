@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   end
 
   def set_item
-    if @product.user != current_user
+    if @product.user != current_user || @product.order.present?
       redirect_to root_path
     end
   end
