@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
     it "nicknameがない場合は登録できないこと" do
       @user.nick_name = ''
       @user.valid?
+      
       expect(@user.errors.full_messages).to include "Nick name can't be blank"
     end
 
