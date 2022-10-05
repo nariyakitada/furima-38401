@@ -12,10 +12,10 @@ class Product < ApplicationRecord
   validates :image, presence: true
   validates :item_name, presence: true
   validates :explanation, presence: true
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :situation_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :delivery_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :area_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :shipment_id, numericality: { other_than: 1 , message: "can't be blank"} 
+  validates :category_id, numericality: { other_than: 1 , message: "を入力してください"} 
+  validates :situation_id, numericality: { other_than: 1 , message: "を入力してください"} 
+  validates :delivery_id, numericality: { other_than: 1 , message: "を入力してください"} 
+  validates :area_id, numericality: { other_than: 1 , message: "を入力してください"} 
+  validates :shipment_id, numericality: { other_than: 1 , message: "を入力してください"} 
   validates :price, presence: true, inclusion: { in: 300..9999999 }
 end
